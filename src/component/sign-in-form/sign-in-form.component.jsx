@@ -8,6 +8,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import Button from "../sign-up-form/Button/Button.component";
+
 const formFields = {
   email: "",
   password: "",
@@ -16,17 +17,17 @@ const formFields = {
 const SignInForm = () => {
   const [fieldValues, setFieldValues] = useState(formFields);
   const { email, password } = fieldValues;
-  console.log(fieldValues);
+
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
-    console.log(user);
-    const userDocRef = await createUserDocumentFromAuth(user);
+    await createUserDocumentFromAuth(user);
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFieldValues({ ...fieldValues, [name]: value });
   };
+
   const resetFields = () => {
     setFieldValues(formFields);
   };
@@ -35,11 +36,10 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      console.log(response);
       resetFields();
     } catch (error) {
       switch (error.code) {

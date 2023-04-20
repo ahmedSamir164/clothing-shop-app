@@ -6,6 +6,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import Button from "./Button/Button.component";
+
 const formFields = {
   displayName: "",
   email: "",
@@ -16,7 +17,6 @@ const formFields = {
 const SignUpForm = () => {
   const [fieldValues, setFieldValues] = useState(formFields);
   const { displayName, email, password, confirmPassword } = fieldValues;
-  console.log(fieldValues);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
