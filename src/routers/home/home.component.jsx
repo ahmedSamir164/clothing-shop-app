@@ -1,5 +1,5 @@
 import Categories from "../../component/categories-container/categories-container.component";
-
+import { useNavigate } from "react-router-dom";
 const Home = () => {
   const categories = [
     {

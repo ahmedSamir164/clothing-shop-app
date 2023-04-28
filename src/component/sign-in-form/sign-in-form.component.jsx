@@ -7,7 +7,9 @@ import {
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
-import Button from "../sign-up-form/Button/Button.component";
+import Button, {
+  BUTTON_TYPE_CLASSES,
+} from "../sign-up-form/Button/Button.component";
 
 const formFields = {
   email: "",
@@ -81,7 +83,11 @@ const SignInForm = () => {
 
         <div className="buttons-container">
           <Button type="submit">SIGN In</Button>
-          <Button type="button" buttonType="google" onClick={signInWithGoogle}>
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={signInWithGoogle}
+          >
             google sign in
           </Button>
         </div>
